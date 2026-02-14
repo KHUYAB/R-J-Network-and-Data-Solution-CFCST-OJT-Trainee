@@ -1,0 +1,397 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="page-hero text-white">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-8 col-xl-7">
+                <span class="hero-badge">Enterprise Solutions</span>
+                <h1 class="display-4 fw-bold mb-4">
+                    Connect with <span class="text-gradient-primary">Network Experts</span>
+                </h1>
+                <p class="lead opacity-90 mb-0">
+                    Transform your digital infrastructure with professional networking solutions 
+                    designed for performance, security, and scalability.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    :root {
+        --primary-color: #0d6efd; /* You can change this to your brand color */
+    }
+
+    .contact-card {
+        background: #ffffff;
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-control, .form-select {
+        border: 1px solid #dee2e6;
+        padding: 12px 15px;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+        background-color: #fff;
+    }
+
+    /* The Professional White Button */
+    .btn-custom-white {
+        background-color: #ffffff !important;
+        color: var(--primary-color) !important;
+        border: 2px solid var(--primary-color) !important;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        padding: 12px 30px;
+    }
+
+    .btn-custom-white:hover {
+        background-color: var(--primary-color) !important;
+        color: #ffffff !important;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(13, 110, 253, 0.2);
+    }
+
+    .info-icon-box {
+        width: 50px;
+        height: 50px;
+        background: rgba(13, 110, 253, 0.08);
+        color: var(--primary-color);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .business-hours-card {
+        background-color: #f8f9fa; /* Light background as requested */
+        border: 1px solid #e9ecef;
+        border-radius: 12px;
+    }
+</style>
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-8">
+                <div class="contact-card p-4 p-lg-5">
+                    <div class="mb-4">
+                        <h2 class="fw-bold text-dark mb-2">Request a Consultation</h2>
+                        <p class="text-muted">
+                            Fill out the form below and our technical team will contact you within 24 hours.
+                        </p>
+                    </div>
+                    
+                    <form id="contactForm" method="POST" action="{{ url_for('contact') }}" class="needs-validation" novalidate>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-uppercase">Full Name *</label>
+                                <input type="text" class="form-control" name="name" placeholder="John Doe" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-uppercase">Company Name</label>
+                                <input type="text" class="form-control" name="company" placeholder="Your organization">
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-uppercase">Email Address *</label>
+                                <input type="email" class="form-control" name="email" placeholder="name@company.com" required>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label class="form-label fw-semibold small text-uppercase">Phone Number</label>
+                                <input type="tel" class="form-control" name="phone" placeholder="+1 (555) 000-0000">
+                            </div>
+                            
+                            <div class="col-12">
+                                <label class="form-label fw-semibold small text-uppercase">Service Required *</label>
+                                <select class="form-select" name="service" required>
+                                    <option value="" selected disabled>Select a service</option>
+                                    <option value="network-installation">Network Installation</option>
+                                    <option value="structured-cabling">Structured Cabling</option>
+                                    <option value="wifi-solutions">WiFi Solutions</option>
+                                    <option value="cctv">CCTV Systems</option>
+                                    <option value="consultation">Consultation</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label class="form-label fw-semibold small text-uppercase">Project Details *</label>
+                                <textarea class="form-control" name="message" rows="4" placeholder="Briefly describe your requirements..." required></textarea>
+                            </div>
+                            
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-custom-white btn-lg w-100">
+                                    <span>Submit Request</span>
+                                    <i class="bi bi-send ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="mb-4">
+                    <h5 class="fw-bold mb-4">Contact Information</h5>
+                    
+                    <div class="d-flex mb-4">
+                        <div class="info-icon-box me-3">
+                            <i class="bi bi-geo-alt fs-5"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0 fw-bold">Address</p>
+                            <p class="text-muted small mb-0">Kabacan, North Cotabato, Philippines</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div class="info-icon-box me-3">
+                            <i class="bi bi-envelope fs-5"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0 fw-bold">Email Us</p>
+                            <p class="text-muted small mb-0">info@netconnectsolutions.com</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mb-4">
+                        <div class="info-icon-box me-3">
+                            <i class="bi bi-telephone fs-5"></i>
+                        </div>
+                        <div>
+                            <p class="mb-0 fw-bold">Call Support</p>
+                            <p class="text-muted small mb-0">(555) 123-4567</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card business-hours-card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h6 class="fw-bold mb-3 d-flex align-items-center">
+                            <i class="bi bi-clock me-2 text-primary"></i> Business Hours
+                        </h6>
+                        <div class="d-flex justify-content-between mb-2 small">
+                            <span class="text-muted">Mon - Fri:</span>
+                            <span class="fw-bold text-dark">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2 small">
+                            <span class="text-muted">Saturday:</span>
+                            <span class="fw-bold text-dark">9:00 AM - 2:00 PM</span>
+                        </div>
+                        <hr class="my-3 opacity-10">
+                        <div class="d-flex justify-content-between small">
+                            <span class="text-muted">Sunday:</span>
+                            <span class="badge bg-soft-primary text-primary" style="background: rgba(13, 110, 253, 0.1);">Emergency Only</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Service Coverage Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="hero-badge d-inline-block mb-3">Service Coverage</span>
+            <h2 class="fw-bold mb-3">Regional Network Coverage</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">
+                We provide enterprise-grade networking solutions across North Cotabato and surrounding regions.
+            </p>
+        </div>
+        
+        <!-- Location Grid -->
+        <div class="row g-4 mb-5">
+            {% set locations = [
+                ('Kabacan', 'bi-router-fill', 'Network Infrastructure'),
+                ('Pikit', 'bi-wifi', 'Wireless Solutions'),
+                ('Aleosan', 'bi-diagram-3-fill', 'Network Design'),
+                ('Kidapawan', 'bi-building-fill', 'Enterprise Solutions'),
+                ('Matalam', 'bi-hdd-network-fill', 'Data Networks'),
+                ("M'lang", 'bi-shield-lock-fill', 'Security Systems')
+            ] %}
+            
+            {% for name, icon, service in locations %}
+            <div class="col-6 col-md-4 col-lg-2">
+                <div class="location-card" 
+                     data-location="{{ name }}, North Cotabato, Philippines"
+                     onclick="updateMap('{{ name }}')">
+                    <div class="location-icon">
+                        <i class="bi {{ icon }}"></i>
+                    </div>
+                    <h6 class="fw-bold mb-2">{{ name }}</h6>
+                    <small class="text-muted">{{ service }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Interactive Map -->
+        <div class="map-container">
+            <iframe 
+                id="serviceMap"
+                class="map-frame"
+                src="https://maps.google.com/maps?q=Kabacan,North%20Cotabato&z=13&output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="p-4 bg-white border-top">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="mb-1 fw-bold" id="mapTitle">
+                            <i class="bi bi-geo-alt-fill text-primary me-2"></i>
+                            Kabacan Service Area
+                        </h6>
+                        <small class="text-muted" id="mapSubtitle">
+                            North Cotabato, Philippines • Primary Coverage Zone
+                        </small>
+                    </div>
+                    <button class="btn btn-outline-primary btn-sm" onclick="getDirections()">
+                        <i class="bi bi-arrow-up-right-circle me-2"></i>
+                        Get Directions
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Form Validation
+    const forms = document.querySelectorAll('.needs-validation');
+    forms.forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        });
+    });
+
+    // Initialize first location as active
+    const firstLocationCard = document.querySelector('.location-card');
+    if (firstLocationCard) {
+        firstLocationCard.classList.add('active');
+    }
+});
+
+function updateMap(location) {
+    const map = document.getElementById('serviceMap');
+    const title = document.getElementById('mapTitle');
+    const subtitle = document.getElementById('mapSubtitle');
+    
+    // Update active state
+    document.querySelectorAll('.location-card').forEach(card => {
+        card.classList.remove('active');
+    });
+    event.currentTarget.classList.add('active');
+    
+    // Update map
+    const encodedLocation = encodeURIComponent(location + ', North Cotabato, Philippines');
+    map.src = `https://maps.google.com/maps?q=${encodedLocation}&z=13&output=embed`;
+    
+    // Update labels
+    title.innerHTML = `<i class="bi bi-geo-alt-fill text-primary me-2"></i>${location} Service Area`;
+    subtitle.textContent = 'North Cotabato, Philippines • Active Coverage Zone';
+    
+    // Smooth scroll to map
+    map.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function getDirections() {
+    const activeLocation = document.querySelector('.location-card.active');
+    const location = activeLocation ? activeLocation.dataset.location : 'Kabacan, North Cotabato, Philippines';
+    const url = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(location)}`;
+    window.open(url, '_blank');
+}
+
+// Add animation to form submission
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    const submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn) {
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Processing...';
+        submitBtn.disabled = true;
+    }
+});
+</script>
+
+<style>
+/* Additional CSS for contact information cards */
+.card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.bg-dark {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
+}
+
+.border-white-10 {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+/* Location cards styling */
+.location-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    background: white;
+}
+
+.location-card:hover, .location-card.active {
+    border-color: #0d6efd;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(13, 110, 253, 0.1);
+}
+
+.location-card.active {
+    background: linear-gradient(135deg, rgba(13, 110, 253, 0.05), rgba(13, 110, 253, 0.1));
+}
+
+.location-icon {
+    width: 48px;
+    height: 48px;
+    background: #eff6ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    font-size: 1.25rem;
+    color: #0d6efd;
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/contact-form.js') }}"></script>
+{% endblock %}
